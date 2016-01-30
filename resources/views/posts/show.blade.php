@@ -10,8 +10,8 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="post-heading">
-                    <h1>文章標題 {{ $id }}</h1>
-                    <h2 class="subheading">文章副標題</h2>
+                    <h1>{{ $post->title }}</h1>
+                    <h2 class="subheading">{{ $post->sub_title }}</h2>
                     <span class="meta">由 <a href="#">Start Bootstrap</a> 發表於 August 24, 2014</span>
                 </div>
             </div>
@@ -31,7 +31,7 @@
                 </div>
 
                 <div style="margin-bottom: 30px;">
-                    文章內容…
+                    {!!$post->contect!!}
                 </div>
 
                 <!-- Comments Form -->

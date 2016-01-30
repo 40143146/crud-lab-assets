@@ -28,14 +28,14 @@
                 <a href="#" class="btn btn-primary" role="button">新增</a>
             </div>
 
-            @foreach(range(1, 5) as $id)
+            @foreach($posts as $post)
             <div class="post-preview">
-                <a href="{{ route('posts.show', $id) }}">
+                <a href="{{ route('posts.show', $post) }}">
                     <h2 class="post-title">
-                        文章標題 {{ $id }}
+                        {{ $post->title }}
                     </h2>
                     <h3 class="post-subtitle">
-                        文章副標題
+                        {{ $post->sub_title }}
                     </h3>
                 </a>
                 <p class="post-meta">由 <a href="#">Start Bootstrap</a> 發表於 September 24, 2014</p>
