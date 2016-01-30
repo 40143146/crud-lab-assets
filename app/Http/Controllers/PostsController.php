@@ -29,9 +29,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        $posts = Post::all();
-        $data = ['posts' => $posts,];
-        return view('posts.create',$data);
+        return view('posts.create');
     }
 
     /**
