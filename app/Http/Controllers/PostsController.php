@@ -29,12 +29,9 @@ class PostsController extends Controller
      */
     public function create()
     {
-        
         $posts = Post::all();
         $data = ['posts' => $posts,];
-
         return view('posts.create',$data);
-
     }
 
     /**
@@ -45,7 +42,8 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Post::create($request->except('_token'));
+        return 'posts.store';
     }
 
     /**
@@ -57,9 +55,7 @@ class PostsController extends Controller
     public function show($id)
     {
         $post = Post::find($id);
-
         $data = compact('post');
-
         return view('posts.show', $data);
     }
 
@@ -71,7 +67,9 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+        $data = compact('post');
+        return  view('posts.edit', $data);
     }
 
     /**
@@ -83,7 +81,9 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post = Post::find($id);
+        $post->update($request->except('_token'));
+        return 'posts.update: ';
     }
 
     /**
@@ -94,15 +94,13 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return 'posts.destroy: ';
     }
 
     public function hot()
     {
         $posts = Post::where('page_view','>',100)->orderBy('updated_at','desc')->get();
-
         $data = compact('posts');
-
         return view('posts.index',$data);
     }
 

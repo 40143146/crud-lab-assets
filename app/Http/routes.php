@@ -25,30 +25,13 @@ Route::get('/', ['as' => 'home.index','uses' => 'HomeController@index']);
 
 Route::get('about', ['as' => 'about.index','uses' => 'AboutController@index']);
 
-Route::get('posts', ['as' => 'posts.index','uses' => 'PostsController@index']);
-
-Route::get('posts/create', ['as' => 'posts.create','uses' => 'PostsController@create']);
-
-Route::post('posts', ['as' => 'posts.store', function() {
-    return 'posts.store';
-}]);
-
-Route::get('posts/{id}', ['as' => 'posts.show','uses' => 'PostsController@show']);
-
-Route::get('posts/{id}/edit', ['as' => 'posts.edit', function($id) {
-
-    $data = compact('id');
-
-    return  view('posts.edit', $data);
-}]);
-
-Route::patch('posts/{id}', ['as' => 'posts.update', function($id) {
-    return 'posts.update: '.$id;
-}]);
-
-Route::delete('posts/{id}', ['as' => 'posts.destroy', function($id) {
-    return 'posts.destroy: '.$id;
-}]);
+Route::get('posts'			 , ['as' => 'posts.index'	 ,'uses' => 'PostsController@index'   ]);
+Route::get('posts/create'	 , ['as' => 'posts.create'	 ,'uses' => 'PostsController@create'  ]);
+Route::post('posts'			 , ['as' => 'posts.store'	 ,'uses' => 'PostsController@store'   ]);
+Route::get('posts/{id}'      , ['as' => 'posts.show'	 ,'uses' => 'PostsController@show'    ]);
+Route::get('posts/{id}/edit' , ['as' => 'posts.edit'	 ,'uses' => 'PostsController@edit'    ]);
+Route::patch('posts/{id}'    , ['as' => 'posts.update'	 ,'uses' => 'PostsController@update'  ]);
+Route::delete('posts/{id}'   , ['as' => 'posts.destroy'  ,'uses' => 'PostsController@destroy' ]);
 
 Route::post('posts/{id}/comment', ['as' => 'posts.comment', function($id) {
     return 'posts.comment: '.$id;
