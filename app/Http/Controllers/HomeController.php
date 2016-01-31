@@ -18,8 +18,11 @@ class HomeController extends Controller
     public function index()
     {
         // return view('posts.index');
-        $posts = Post::all();
-        $data = ['posts' => $posts,];
+        // $posts = Post::all();
+        // $data = ['posts' => $posts,];
+        //自動分頁
+        $posts = Post::orderBy('created_at','desc')->paginate(5);
+        $data = compact('posts');
         return view('posts.index',$data);
 
     }

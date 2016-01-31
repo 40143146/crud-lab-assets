@@ -17,8 +17,11 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
-        $data = ['posts' => $posts,];
+        // $posts = Post::all();
+        // $data = ['posts' => $posts,];
+        // 自動分頁
+        $posts = Post::orderBy('created_at','desc')->paginate(5);
+        $data = compact('posts');
         return view('posts.index',$data);
     }
 
@@ -41,7 +44,8 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         Post::create($request->except('_token'));
-        return 'posts.store';
+        // return 'posts.store';
+        return redirect()->route('posts.create');
     }
 
     /**
@@ -81,7 +85,8 @@ class PostsController extends Controller
     {
         $post = Post::find($id);
         $post->update($request->except('_token'));
-        return 'posts.update: ';
+        // return 'posts.update: ';
+        return redirect()->route('posts.edit',$post->id);
     }
 
     /**
@@ -92,7 +97,11 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        return 'posts.destroy: ';
+        // dd('destroy');
+        //刪除
+        Post::destroy($id);         
+        // return 'posts.destroy: ';
+        return redirect()->route('posts.index');
     }
 
     public function hot()

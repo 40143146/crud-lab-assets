@@ -24,10 +24,13 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-
                 <div class="text-right" style="margin-bottom: 50px;">
-                    <a href="#" class="btn btn-primary" role="button">編輯</a>
-                    <a href="#" class="btn btn-danger" role="button">刪除</a>
+                    <!-- <a href="#" class="btn btn-primary" role="button">編輯</a> -->
+                    <a href="{{route('posts.edit',$post->id)}}" class="btn btn-primary" role="button">編輯</a>
+                    {!! Form::open(['route' => ['posts.destroy',$post->id],'method' => 'delete','style' => 'display:inline']) !!}
+                    {!! Form::submit('刪除',['class' => 'btn btn-danger','role' => 'button']) !!}
+                    {!! Form::close() !!}
+                    <!-- <a href="#" class="btn btn-danger" role="button">刪除</a> -->
                 </div>
 
                 <div style="margin-bottom: 30px;">

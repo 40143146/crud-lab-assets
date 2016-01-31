@@ -38,13 +38,16 @@
                         {{ $post->sub_title }}
                     </h3>
                 </a>
-                <p class="post-meta">由 <a href="#">Start Bootstrap</a> 發表於 September 24, 2014</p>
+                <p class="post-meta">由 <a href="#">Start Bootstrap</a> 發表於 {{ $post->created_at->diffForHumans() }} September 24, 2014</p>
             </div>
             <hr>
             @endforeach
             
+            
+
+
             <!-- Pager -->
-            <nav class="text-center">
+<!--             <nav class="text-center">
                 <ul class="pagination">
                     <li>
                         <a href="#" aria-label="Previous">
@@ -61,8 +64,12 @@
                             <span aria-hidden="true">&raquo;</span>
                         </a>
                     </li>
-                </ul>
-            </nav>
+            </nav> -->
+
+            <!-- 自動分頁 -->
+            <div class="text-center">
+            {!! $posts->render() !!}
+            </div>
         </div>
     </div>
 </div>

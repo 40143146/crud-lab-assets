@@ -37,9 +37,8 @@ Route::post('posts/{id}/comment', ['as' => 'posts.comment', function($id) {
     return 'posts.comment: '.$id;
 }]);
 
-Route::get('hot', ['as' => 'posts.hot','uses' => 'PostsController@hot']);
-
-Route::get('random', ['as' => 'posts.random','uses' => 'PostsController@random']);
+Route::get('hot'			 , ['as' => 'posts.hot'		 ,'uses' => 'PostsController@hot'	  ]);
+Route::get('random'			 , ['as' => 'posts.random'	 ,'uses' => 'PostsController@random'  ]);
 
 /*
 |--------------------------------------------------------------------------
